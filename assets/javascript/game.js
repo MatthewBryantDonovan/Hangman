@@ -1,9 +1,8 @@
+// Start by declaring Variables
 var wordPool = ["Joe", "Potato", "Pickles", "Bears"]
-
+var pastGameWords = [];
 var currentWord = wordPool[Math.floor(Math.random() * wordPool.length)];
-
 var currentWordAr = currentWord.toLowerCase().split("");
-
 var userGuess
 var userGuessed = [];
 var currentVsUser = [];
@@ -12,86 +11,123 @@ var amountCorrect = 0;
 var wins = 0;
 var guessesRemaining = 6;
 var guessedCorrectly = false;
-var gamestart = "";
 var guessedBefore = false;
-var isLetter = false;
+var gameStart = true;
+var firstInput = false;
+var missionComplete = false;
 
+//make an array of blank spaces for user to guess
 for (var i = 0; i < currentWord.length; i++) {
   currentVsUser.push("_");
 }
 
+//make the win condition equal to the length of the word we are guessing
 winCon = currentWord.length;
 
+//push some content to html so it can be utilized later
 document.getElementById("start").innerHTML = "Press any key to get started!";
-// take a look at this later
-/* document.getElementById("start").onkeyup = function() {hideStart()};
-
-function hideStart() {
-  document.getElementById("start").style.backgroundColor = "red";
-  console.log("Hello world");
-} */
-/* document.getElementById("start").style.visibility = "hidden"; */
-
-/* document.getElementById("start").onkeyup = function() {
-  document.getElementById("start").style.visibility = "hidden";
- */
 document.getElementById("current-word").innerHTML = currentVsUser;
 document.getElementById("wins-").innerHTML = wins;
 document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
+gameStart = false;
 
+//have user input a key
+if (missionComplete == false){
 document.onkeyup = function (getkey) {
-  userGuess = getkey.key;
 
-  if (userGuess.search(/[^a-zA-Z]+/) === -1) {
-
-
-    for (var m = 0; m < userGuessed.length; m++) {
-      if (userGuessed[m] == userGuess) {
-        guessedBefore = true;
+  //establish new game info
+  if (gameStart == true) {
+    pastGameWords.push(currentWord);
+    if (wordPool.length != pastGameWords.length){
+      do {
+      currentWord = wordPool[Math.floor(Math.random() * wordPool.length)];
+      } while (pastGameWords.indexOf(currentWord) != -1);
+    } 
+      currentWordAr = currentWord.toLowerCase().split("");
+      currentVsUser = [];
+      userGuessed = [];
+      document.getElementById("user-guessed").innerHTML = userGuessed;
+      amountCorrect = 0;
+      guessesRemaining = 6;
+      //make an array of blank spaces for user to guess
+      for (var i = 0; i < currentWord.length; i++) {
+        currentVsUser.push("_");
       }
-    }
 
-    var a = 0;
+    //make the win condition equal to the length of the word we are guessing
+    winCon = currentWord.length;
 
-    if (guessedBefore == false) {
-      userGuessed.push(userGuess);
-      currentWordAr.forEach(function (currentLetter) {
-        if (userGuess === currentWordAr[a]) {
-          currentVsUser[a] = currentLetter;
-          guessedCorrectly = true;
-        }
-        a++
-
-
-      });
-    } else {
-      alert("You guessed that before! Try a new letter.");
-    }
-    if (guessedCorrectly == false && guessedBefore == false) {
-      guessesRemaining--;
-    }
-
-    if (guessedCorrectly == true) {
-      amountCorrect++;
-    }
-    guessedCorrectly = false;
-    guessedBefore = false;
-    document.getElementById("user-guessed").innerHTML = userGuessed;
+    //reset info for user
     document.getElementById("current-word").innerHTML = currentVsUser;
     document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
-    //get user input
-    // enter funtion when yes is press to play
-    // loop that ends when Fails=6 or winCon met
-    // run game logic
+    gameStart = false;
+    firstInput = false;
+  }
+  // end gamestart
 
-    if (winCon == amountCorrect) {
-      document.getElementById("play-again").innerHTML = "You Win! Do you want to try again?";
-    }
-    if (guessesRemaining === 0) {
-      document.getElementById("play-again").innerHTML = "You lose! Do you want to try again?";
+
+
+  if (firstInput == false) {
+    document.getElementById("start").innerHTML = "";
+    document.getElementById("play-again").innerHTML = "";
+    firstInput = true;
+
+  } else {
+    userGuess = getkey.key;
+    document.getElementById("play-again").innerHTML = "";
+    //only run logic if user inputs a letter
+    if (userGuess.search(/[^a-zA-Z]+/) === -1) {
+
+      //see if user guessed the letter before
+      for (var m = 0; m < userGuessed.length; m++) {
+        if (userGuessed[m] == userGuess) {
+          guessedBefore = true;
+        }
+      }
+
+      //add the letters to the board if found in word
+      var a = 0;
+      if (guessedBefore == false) {
+        userGuessed.push(userGuess);
+        currentWordAr.forEach(function (currentLetter) {
+          if (userGuess === currentWordAr[a]) {
+            currentVsUser[a] = currentLetter;
+            guessedCorrectly = true;
+            //add the amount of letters correct to check against win conditon later
+            amountCorrect++;
+          }
+          a++
+        });
+      } else {
+        document.getElementById("play-again").innerHTML = "You guessed that before! Try a new letter.";
+      }
+
+      // if used didn't guess correctly - take away a guess
+      if (guessedCorrectly == false && guessedBefore == false) {
+        guessesRemaining--;
+      }
+
+      // reset and tally varibles for next run
+      guessedCorrectly = false;
+      guessedBefore = false;
+      document.getElementById("user-guessed").innerHTML = userGuessed;
+      document.getElementById("current-word").innerHTML = currentVsUser;
+      document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
+
+      //winning condition
+      if (winCon == amountCorrect) {
+        wins++;
+        document.getElementById("wins-").innerHTML = wins;
+        document.getElementById("play-again").innerHTML = "You Win! Press any key to try again?";
+        gameStart = true;
+      }
+      //losing condition
+      if (guessesRemaining === 0) {
+        document.getElementById("play-again").innerHTML = "You lose! Press any key to try again?";
+        gameStart = true;
+      }
     }
   }
-};
-
-// make game start -- do this last
-// instead of alert on allreadyguessed make it a toast
+}
+}
+// new game word never equals old game word
