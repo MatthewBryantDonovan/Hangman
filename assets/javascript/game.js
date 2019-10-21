@@ -22,11 +22,11 @@ for (var i = 0; i < currentWord.length; i++) {
 }
 
 //make the win condition equal to the length of the word we are guessing
-winCon = currentWord.length;
+ winCon = currentWord.length;
 
 //push some content to html so it can be utilized later
 document.getElementById("start").innerHTML = "Press any key to get started!";
-document.getElementById("current-word").innerHTML = currentVsUser;
+document.getElementById("current-word").innerHTML = currentVsUser.join(" ");
 document.getElementById("wins-").innerHTML = wins;
 document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
 gameStart = false;
@@ -49,7 +49,7 @@ document.onkeyup = function (getkey) {
       currentWordAr = currentWord.toLowerCase().split("");
       currentVsUser = [];
       userGuessed = [];
-      document.getElementById("user-guessed").innerHTML = userGuessed;
+      document.getElementById("user-guessed").innerHTML = userGuessed.join(" ");
       amountCorrect = 0;
       guessesRemaining = 6;
       //make an array of blank spaces for user to guess
@@ -61,7 +61,7 @@ document.onkeyup = function (getkey) {
       winCon = currentWord.length;
 
       //reset info for user
-      document.getElementById("current-word").innerHTML = currentVsUser;
+      document.getElementById("current-word").innerHTML = currentVsUser.join(" ");
       document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
       gameStart = false;
       firstInput = false;
@@ -69,6 +69,7 @@ document.onkeyup = function (getkey) {
     // end gamestart
 
 
+    
 
     if (firstInput == false) {
       document.getElementById("start").innerHTML = "";
@@ -77,9 +78,10 @@ document.onkeyup = function (getkey) {
 
     } else {
       userGuess = getkey.key;
+      userGuess = userGuess.toLowerCase();
       document.getElementById("play-again").innerHTML = "";
       //only run logic if user inputs a letter
-      if (userGuess.search(/[^a-zA-Z]+/) === -1) {
+      if (userGuess.search(/[a-z]/) === 0 && userGuess.length == 1 ){
 
         //see if user guessed the letter before
         for (var m = 0; m < userGuessed.length; m++) {
@@ -113,8 +115,8 @@ document.onkeyup = function (getkey) {
         // reset and tally varibles for next run
         guessedCorrectly = false;
         guessedBefore = false;
-        document.getElementById("user-guessed").innerHTML = userGuessed;
-        document.getElementById("current-word").innerHTML = currentVsUser;
+        document.getElementById("user-guessed").innerHTML = userGuessed.join(" ");
+        document.getElementById("current-word").innerHTML = currentVsUser.join(" ");
         document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
 
         //winning condition
@@ -130,6 +132,8 @@ document.onkeyup = function (getkey) {
           document.getElementById("play-again").innerHTML = "You lose! Press any key to try again?";
           gameStart = true;
         }
+      } else {
+        console.log(userGuess.search(/[^a-zA-Z]+/));
       }
     }
   } else {
