@@ -10,17 +10,23 @@
 
 </head>
 <body>
-
-    <br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="playerBoard">
-        <h1>Hangman</h1>
-        <p> <span id="start" onkeypress="hideStart()"></span></p>
-        <p> Guess this word: <span id="current-word"></span></p>
-        <p> Wins: <span id="wins-"></span></p>
-        <p> Incorrect Guesses Remaining: <span id="guesses-Remaining"></span></p>
-        <p> Letters already guessed: <span id="user-guessed"></span></p>
-        <p><span id="play-again"></span></p>
-        <p><span id="mission-complete"></span></p>
+        <div>
+            <div class="start">
+                <p> <p id="start" onkeypress="hideStart()"></p></p>
+            </div>
+            <div class="start start2">
+                <p> <span id="current-word"></span></p>
+                <p> <span id="wins-"></span></p>
+                <p> <span id="guesses-Remaining"></span></p>
+                <p> <span id="user-guessed"></span></p>
+                
+            </div>
+            <div class="start">
+                <p><span id="play-again"></span></p>
+                <p><span id="mission-complete"></span></p>
+            </div>
+        </div>
     </div>
 <script type="text/javascript" src="./assets/javascript/game.js"></script>
 </body>

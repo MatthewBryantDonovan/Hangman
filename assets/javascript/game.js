@@ -12,7 +12,7 @@ var wins = 0;
 var guessesRemaining = 6;
 var guessedCorrectly = false;
 var guessedBefore = false;
-var gameStart = true;
+var gameStart = false;
 var firstInput = false;
 var hasWon = false;
 
@@ -25,10 +25,7 @@ for (var i = 0; i < currentWord.length; i++) {
  winCon = currentWord.length;
 
 //push some content to html so it can be utilized later
-document.getElementById("start").innerHTML = "Press any key to get started!";
-document.getElementById("current-word").innerHTML = currentVsUser.join(" ");
-document.getElementById("wins-").innerHTML = wins;
-document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
+document.getElementById("start").innerHTML = "Snake to enter this facility we are going to have hack it's passwords... Press any key to get started.";
 gameStart = false;
 
 //have user input a key
@@ -49,7 +46,7 @@ document.onkeyup = function (getkey) {
       currentWordAr = currentWord.toLowerCase().split("");
       currentVsUser = [];
       userGuessed = [];
-      document.getElementById("user-guessed").innerHTML = userGuessed.join(" ");
+      document.getElementById("user-guessed").innerHTML = "Letters already guessed: " + userGuessed.join(" ");
       amountCorrect = 0;
       guessesRemaining = 6;
       //make an array of blank spaces for user to guess
@@ -61,8 +58,8 @@ document.onkeyup = function (getkey) {
       winCon = currentWord.length;
 
       //reset info for user
-      document.getElementById("current-word").innerHTML = currentVsUser.join(" ");
-      document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
+      document.getElementById("current-word").innerHTML = "Facility password: " + currentVsUser.join(" ");
+      document.getElementById("guesses-Remaining").innerHTML = "Incorrect guesses remaining: " + guessesRemaining;
       gameStart = false;
       firstInput = false;
     }
@@ -74,6 +71,10 @@ document.onkeyup = function (getkey) {
     if (firstInput == false) {
       document.getElementById("start").innerHTML = "";
       document.getElementById("play-again").innerHTML = "";
+      document.getElementById("current-word").innerHTML = "Facility password: " + currentVsUser.join(" ");
+      document.getElementById("wins-").innerHTML = "Successful hacks: " + wins;
+      document.getElementById("guesses-Remaining").innerHTML = "Incorrect guesses remaining: " + guessesRemaining;
+      document.getElementById("user-guessed").innerHTML = "Letters already guessed: ";
       firstInput = true;
 
     } else {
@@ -115,21 +116,32 @@ document.onkeyup = function (getkey) {
         // reset and tally varibles for next run
         guessedCorrectly = false;
         guessedBefore = false;
-        document.getElementById("user-guessed").innerHTML = userGuessed.join(" ");
-        document.getElementById("current-word").innerHTML = currentVsUser.join(" ");
-        document.getElementById("guesses-Remaining").innerHTML = guessesRemaining;
+        document.getElementById("user-guessed").innerHTML = "Letters already guessed: " + userGuessed.join(" ");
+        document.getElementById("current-word").innerHTML = "Facility password: " + currentVsUser.join(" ");
+        document.getElementById("guesses-Remaining").innerHTML = "Incorrect guesses remaining: " + guessesRemaining;
 
         //winning condition
         if (winCon == amountCorrect) {
           wins++;
-          document.getElementById("wins-").innerHTML = wins;
-          document.getElementById("play-again").innerHTML = "You Win! Press any key to try again?";
+          document.getElementById("current-word").innerHTML = "";
+          document.getElementById("wins-").innerHTML = "";
+          document.getElementById("guesses-Remaining").innerHTML = "";
+          document.getElementById("user-guessed").innerHTML = "";
+          if (wins == 1) {
+            document.getElementById("play-again").innerHTML = "That's one password down. Keep 'em coming snake!";
+          } else {
+            document.getElementById("play-again").innerHTML = "That's another password down! One step closer to entry!";
+          }
           gameStart = true;
           hasWon = true;
         }
         //losing condition
         if (guessesRemaining === 0) {
-          document.getElementById("play-again").innerHTML = "You lose! Press any key to try again?";
+          document.getElementById("current-word").innerHTML = "";
+          document.getElementById("wins-").innerHTML = "";
+          document.getElementById("guesses-Remaining").innerHTML = "";
+          document.getElementById("user-guessed").innerHTML = "";
+          document.getElementById("play-again").innerHTML = "Snake? Snake!? Snaaaake!";
           gameStart = true;
         }
       } else {
@@ -137,7 +149,7 @@ document.onkeyup = function (getkey) {
       }
     }
   } else {
-    document.getElementById("mission-complete").innerHTML = "Oh my! You guessed every word!";
+    document.getElementById("mission-complete").innerHTML = "You entered all the passwords! Quick infiltrate the facility!";
     document.getElementById("play-again").innerHTML = "";
   }
 }
