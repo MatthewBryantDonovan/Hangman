@@ -105,7 +105,9 @@ document.onkeyup = function (getkey) {
             a++
           });
         } else {
-          document.getElementById("error").innerHTML = "! Snake you tried that already !";
+          document.getElementById("error").innerHTML = "! Snake, you tried that already !";
+          document.getElementById("error").style.color = "red";
+/*           document.getElementById("error").style.display = "none"; */
         }
 
         // if used didn't guess correctly - take away a guess

@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Metal Gear";
+    src: url(../TTF/METAG___.TTF);
+}
+
 body {
     background: url(../images/gameScreen.gif);
     background-size: 100%;
@@ -15,8 +20,7 @@ p, h1, span    {
     background-repeat: no-repeat;
     margin: 0 auto;
     width: 500px;
-    height: 260px;
-    overflow: hidden;
+    height: 240px;
     box-shadow: 0 8px 8px 8px black;
 }
 
@@ -29,4 +33,10 @@ p, h1, span    {
 
 .start2 {
     bottom: -160px;
+}
+
+#error {
+    position: relative;
+    top: 60px;
+    font-family: "Metal Gear";
 }
