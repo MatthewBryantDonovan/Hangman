@@ -1,5 +1,5 @@
 // Start by declaring Variables
-var wordPool = ["Joe", "Potato", "Pickles", "Bears"]
+var wordPool = ["Psychokinesis", "Vulcan", "Raven", "Mantis", "Ocelot", "Campbell", "Nanomachines", "Zanzibar", "Foxhound", "Foxdie"]
 var pastGameWords = [];
 var currentWord = wordPool[Math.floor(Math.random() * wordPool.length)];
 var currentWordAr = currentWord.toLowerCase().split("");
@@ -80,7 +80,7 @@ document.onkeyup = function (getkey) {
     } else {
       userGuess = getkey.key;
       userGuess = userGuess.toLowerCase();
-      document.getElementById("play-again").innerHTML = "";
+      document.getElementById("error").innerHTML = "";
       //only run logic if user inputs a letter
       if (userGuess.search(/[a-z]/) === 0 && userGuess.length == 1 ){
 
@@ -105,7 +105,7 @@ document.onkeyup = function (getkey) {
             a++
           });
         } else {
-          document.getElementById("play-again").innerHTML = "You guessed that before! Try a new letter.";
+          document.getElementById("error").innerHTML = "! Snake you tried that already !";
         }
 
         // if used didn't guess correctly - take away a guess
