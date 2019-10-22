@@ -130,11 +130,14 @@ document.onkeyup = function (getkey) {
           document.getElementById("guesses-Remaining").innerHTML = "";
           document.getElementById("user-guessed").innerHTML = "";
           if (wins == 1) {
+            document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             document.getElementById("play-again").innerHTML = "That's one password down. Keep 'em coming snake!";
           } else if (wins < wordPool.length ){
+            document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             document.getElementById("play-again").innerHTML = "That's another password down! One step closer to entry!";
           } else if (wins == wordPool.length) 
           {
+            document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             document.getElementById("play-again").innerHTML = "You hacked all the passwords!";
           }
           gameStart = true;
