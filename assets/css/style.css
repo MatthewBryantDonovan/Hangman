@@ -40,3 +40,14 @@ p, h1, span    {
     top: 60px;
     font-family: "Metal Gear";
 }
+
+@media screen and (max-width:535px) 
+{
+    .playerBoard {
+        width: 100vw;
+        height: 35vh;
+        background-color: black;;
+        background-size: 100%;
+        box-shadow: none;
+    }
+}
