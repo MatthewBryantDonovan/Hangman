@@ -32,18 +32,18 @@ var x = window.matchMedia("(max-width: 535px)")
 
 // var mq = window.matchMedia('@media all and (max-width: 700px)');
 
-if(x.matches) {
-   console.log("small screen");
-   prompt();
-   //make a div with a high z-index to  that tells user to move phone sideways
+if (x.matches) {
+  console.log("small screen");
+  document.getElementById("mobileKB").focus();
+  //make a div with a high z-index to  that tells user to move phone sideways
 } else {
-   console.log("big screen");
+  console.log("big screen");
 }
 
-x.addListener(function(changed) {
-  if(changed.matches) {
+x.addListener(function (changed) {
+  if (changed.matches) {
     console.log("small screen");
-    prompt();
+    document.getElementById("mobileKB").focus();
   } else {
     console.log("big screen");
     //prompt user so the keypad pops up
@@ -122,7 +122,7 @@ for (var i = 0; i < currentWord.length; i++) {
 }
 
 //make the win condition equal to the length of the word we are guessing
- winCon = currentWord.length;
+winCon = currentWord.length;
 
 //push some content to html so it can be utilized later
 document.getElementById("start").innerHTML = "Snake to enter this facility we are going to have hack it's passwords... Press any key to get started.";
@@ -166,7 +166,7 @@ document.onkeyup = function (getkey) {
     // end gamestart
 
 
-    
+
 
     if (firstInput == false) {
       document.getElementById("start").innerHTML = "";
@@ -181,7 +181,7 @@ document.onkeyup = function (getkey) {
       userGuess = userGuess.toLowerCase();
       document.getElementById("error").innerHTML = "";
       //only run logic if user inputs a letter
-      if (userGuess.search(/[a-z]/) === 0 && userGuess.length == 1 ){
+      if (userGuess.search(/[a-z]/) === 0 && userGuess.length == 1) {
 
         //see if user guessed the letter before
         for (var m = 0; m < userGuessed.length; m++) {
@@ -207,7 +207,7 @@ document.onkeyup = function (getkey) {
           document.getElementById("error").innerHTML = "! Snake, you tried that already !";
           alertSound();
           document.getElementById("error").style.color = "red";
-/*           document.getElementById("error").style.display = "none"; */
+          /*           document.getElementById("error").style.display = "none"; */
         }
 
         // if used didn't guess correctly - take away a guess
@@ -234,7 +234,7 @@ document.onkeyup = function (getkey) {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             winOneSound();
             document.getElementById("play-again").innerHTML = "That's one password down. Keep 'em coming snake!";
-          } else if (wins < wordPool.length ){
+          } else if (wins < wordPool.length) {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             if (wins == 2) {
               winTwoSound();
@@ -261,8 +261,7 @@ document.onkeyup = function (getkey) {
               winNineSound();
             }
             document.getElementById("play-again").innerHTML = "That's another password down! One step closer to entry!";
-          } else if (wins == wordPool.length) 
-          {
+          } else if (wins == wordPool.length) {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             winTenSound();
             document.getElementById("play-again").innerHTML = "You hacked all the passwords!";
