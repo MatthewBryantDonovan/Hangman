@@ -30,11 +30,16 @@ var winNineMP3 = document.getElementById("win-nine");
 var winTenMP3 = document.getElementById("win-ten");
 var x = window.matchMedia("(max-width: 535px)")
 
+function vKB() {
+  $("#textinput").focus();
+  console.log("clicked");
+}
+
 // var mq = window.matchMedia('@media all and (max-width: 700px)');
 
 if (x.matches) {
   console.log("small screen");
-  document.getElementById("mobileKB").focus();
+/*   document.getElementById("mobileKB").click = console.log("clicked"); */
   //make a div with a high z-index to  that tells user to move phone sideways
 } else {
   console.log("big screen");
@@ -43,7 +48,6 @@ if (x.matches) {
 x.addListener(function (changed) {
   if (changed.matches) {
     console.log("small screen");
-    document.getElementById("mobileKB").focus();
   } else {
     console.log("big screen");
     //prompt user so the keypad pops up
