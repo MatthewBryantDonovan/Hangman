@@ -18,6 +18,36 @@ var hasWon = false;
 var mainThemeMP3 = document.getElementById("main-theme");
 var alertMP3 = document.getElementById("alert");
 var snakeMP3 = document.getElementById("snake");
+var winOneMP3 = document.getElementById("win-one");
+var winTwoMP3 = document.getElementById("win-two");
+var winThreeMP3 = document.getElementById("win-three");
+var winFourMP3 = document.getElementById("win-four");
+var winFiveMP3 = document.getElementById("win-five");
+var winSixMP3 = document.getElementById("win-six");
+var winSevenMP3 = document.getElementById("win-seven");
+var winEightMP3 = document.getElementById("win-eight");
+var winNineMP3 = document.getElementById("win-nine");
+var winTenMP3 = document.getElementById("win-ten");
+var x = window.matchMedia("(max-width: 535px)")
+
+// var mq = window.matchMedia('@media all and (max-width: 700px)');
+
+if(x.matches) {
+   console.log("small screen");
+   //make a div with a high z-index to  that tells user to move phone sideways
+} else {
+   console.log("big screen");
+}
+
+x.addListener(function(changed) {
+  if(changed.matches) {
+    console.log("small screen");
+  } else {
+    console.log("big screen");
+    //prompt user so the keypad pops up
+  }
+});
+
 
 function mainSound() {
   mainThemeMP3.volume = 0.2;
@@ -34,7 +64,55 @@ function alertSound() {
   alertMP3.play();
 }
 
-mainSound();
+function winOneSound() {
+  winOneMP3.volume = 0.7;
+  winOneMP3.play();
+}
+
+function winTwoSound() {
+  winTwoMP3.volume = 0.7;
+  winTwoMP3.play();
+}
+
+function winThreeSound() {
+  winThreeMP3.volume = 0.7;
+  winThreeMP3.play();
+}
+
+function winFourSound() {
+  winFourMP3.volume = 0.7;
+  winFourMP3.play();
+}
+
+function winFiveSound() {
+  winFiveMP3.volume = 0.7;
+  winFiveMP3.play();
+}
+
+function winSixSound() {
+  winSixMP3.volume = 0.7;
+  winSixMP3.play();
+}
+
+function winSevenSound() {
+  winSevenMP3.volume = 0.7;
+  winSevenMP3.play();
+}
+
+function winEightSound() {
+  winEightMP3.volume = 0.7;
+  winEightMP3.play();
+}
+
+function winNineSound() {
+  winNineMP3.volume = 0.7;
+  winNineMP3.play();
+}
+
+function winTenSound() {
+  winTenMP3.volume = 0.7;
+  winTenMP3.play();
+}
 
 //make an array of blank spaces for user to guess
 for (var i = 0; i < currentWord.length; i++) {
@@ -152,14 +230,41 @@ document.onkeyup = function (getkey) {
           document.getElementById("user-guessed").innerHTML = "";
           if (wins == 1) {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
+            winOneSound();
             document.getElementById("play-again").innerHTML = "That's one password down. Keep 'em coming snake!";
           } else if (wins < wordPool.length ){
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
+            if (wins == 2) {
+              winTwoSound();
+            }
+            if (wins == 3) {
+              winThreeSound();
+            }
+            if (wins == 4) {
+              winFourSound();
+            }
+            if (wins == 5) {
+              winFiveSound();
+            }
+            if (wins == 6) {
+              winSixSound();
+            }
+            if (wins == 7) {
+              winSevenSound();
+            }
+            if (wins == 8) {
+              winEightSound();
+            }
+            if (wins == 9) {
+              winNineSound();
+            }
             document.getElementById("play-again").innerHTML = "That's another password down! One step closer to entry!";
           } else if (wins == wordPool.length) 
           {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
+            winTenSound();
             document.getElementById("play-again").innerHTML = "You hacked all the passwords!";
+
           }
           gameStart = true;
           hasWon = true;
@@ -170,7 +275,7 @@ document.onkeyup = function (getkey) {
           document.getElementById("wins-").innerHTML = "";
           document.getElementById("guesses-Remaining").innerHTML = "";
           document.getElementById("user-guessed").innerHTML = "";
-          document.getElementById("play-again").innerHTML = "Snake? Snake!? Snaaaake!";
+          document.getElementById("play-again").innerHTML = "Snake? What Happened!? Snake!? Snaaaake!";
           snakeSound();
           gameStart = true;
         }
@@ -179,8 +284,10 @@ document.onkeyup = function (getkey) {
       }
     }
   } else {
+    document.getElementById("wins-").innerHTML = "";
     document.getElementById("mission-complete").innerHTML = "Quick infiltrate the facility!";
     document.getElementById("play-again").innerHTML = "";
   }
+  mainSound();
 }
 // new game word never equals old game word
