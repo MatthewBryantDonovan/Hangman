@@ -34,6 +34,7 @@ var x = window.matchMedia("(max-width: 535px)")
 
 if(x.matches) {
    console.log("small screen");
+   prompt();
    //make a div with a high z-index to  that tells user to move phone sideways
 } else {
    console.log("big screen");
@@ -42,6 +43,7 @@ if(x.matches) {
 x.addListener(function(changed) {
   if(changed.matches) {
     console.log("small screen");
+    prompt();
   } else {
     console.log("big screen");
     //prompt user so the keypad pops up
@@ -174,7 +176,6 @@ document.onkeyup = function (getkey) {
       document.getElementById("guesses-Remaining").innerHTML = "Incorrect guesses remaining: " + guessesRemaining;
       document.getElementById("user-guessed").innerHTML = "Letters already guessed: ";
       firstInput = true;
-
     } else {
       userGuess = getkey.key;
       userGuess = userGuess.toLowerCase();
@@ -228,6 +229,7 @@ document.onkeyup = function (getkey) {
           document.getElementById("wins-").innerHTML = "";
           document.getElementById("guesses-Remaining").innerHTML = "";
           document.getElementById("user-guessed").innerHTML = "";
+
           if (wins == 1) {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             winOneSound();

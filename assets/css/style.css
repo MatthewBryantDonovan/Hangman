@@ -15,7 +15,7 @@ p, h1, span    {
 }
 
 .playerBoard {
-    background: url(../images/gameBoard.jpg);
+    background: url(../images/talkingBlank.gif);
     background-size: 100%;
     background-repeat: no-repeat;
     margin: 0 auto;
