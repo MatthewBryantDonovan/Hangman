@@ -28,19 +28,30 @@ var winSevenMP3 = document.getElementById("win-seven");
 var winEightMP3 = document.getElementById("win-eight");
 var winNineMP3 = document.getElementById("win-nine");
 var winTenMP3 = document.getElementById("win-ten");
-var x = window.matchMedia("(max-width: 535px)")
+/* var x = window.matchMedia("(max-width: 535px)") */
 
-function vKB() {
+
+
+
+// the code commented below is an attempt to make the virtual keyboard open on mobile
+// var mq = window.matchMedia('@media all and (max-width: 700px)');
+/* function vKB() {
   $("#mobileKB").focus();
-  console.log("clicked");
+  console.log("11112222");
 }
 
-// var mq = window.matchMedia('@media all and (max-width: 700px)');
+var target = document.getElementsByTagName("mobileKB")[0];
 
-if (x.matches) {
-  console.log("small screen");
+if (target != target) {
+    target.focus();
+    target.click();
+    console.log("4445555");
+} */
 /*   document.getElementById("mobileKB").click = console.log("clicked"); */
   //make a div with a high z-index to  that tells user to move phone sideways
+/* if (x.matches) {
+  console.log("small screen");
+
 } else {
   console.log("big screen");
 }
@@ -50,10 +61,10 @@ x.addListener(function (changed) {
     console.log("small screen");
   } else {
     console.log("big screen");
-    //prompt user so the keypad pops up
-  }
-});
 
+  }
+}); */
+    //prompt user so the keypad pops up
 
 function mainSound() {
   mainThemeMP3.volume = 0.2;
