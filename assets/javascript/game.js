@@ -31,7 +31,7 @@ var winTenMP3 = document.getElementById("win-ten");
 var x = window.matchMedia("(max-width: 535px)")
 
 function vKB() {
-  $("#textinput").focus();
+  $("#mobileKB").focus();
   console.log("clicked");
 }
 
