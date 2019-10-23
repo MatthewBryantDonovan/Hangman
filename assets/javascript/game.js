@@ -15,6 +15,26 @@ var guessedBefore = false;
 var gameStart = false;
 var firstInput = false;
 var hasWon = false;
+var mainThemeMP3 = document.getElementById("main-theme");
+var alertMP3 = document.getElementById("alert");
+var snakeMP3 = document.getElementById("snake");
+
+function mainSound() {
+  mainThemeMP3.volume = 0.2;
+  mainThemeMP3.play();
+}
+
+function snakeSound() {
+  snakeMP3.volume = 0.5;
+  snakeMP3.play();
+}
+
+function alertSound() {
+  alertMP3.volume = 0.7;
+  alertMP3.play();
+}
+
+mainSound();
 
 //make an array of blank spaces for user to guess
 for (var i = 0; i < currentWord.length; i++) {
@@ -106,6 +126,7 @@ document.onkeyup = function (getkey) {
           });
         } else {
           document.getElementById("error").innerHTML = "! Snake, you tried that already !";
+          alertSound();
           document.getElementById("error").style.color = "red";
 /*           document.getElementById("error").style.display = "none"; */
         }
@@ -150,6 +171,7 @@ document.onkeyup = function (getkey) {
           document.getElementById("guesses-Remaining").innerHTML = "";
           document.getElementById("user-guessed").innerHTML = "";
           document.getElementById("play-again").innerHTML = "Snake? Snake!? Snaaaake!";
+          snakeSound();
           gameStart = true;
         }
       } else {

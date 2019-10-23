@@ -9,7 +9,19 @@
     <title>Hangman</title>
 
 </head>
-<body>
+<body> 
+    <audio id="main-theme" volume="0.4">
+        <source src="./assets/mp3/mainTheme.mp3">
+    </audio> 
+
+    <audio id="alert" volume="0.7">
+        <source src="assets/mp3/alert.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="snake" volume="0.5">
+            <source src="assets/mp3/snake.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="playerBoard">
         <div>
             <div class="start">
@@ -28,7 +40,8 @@
             </div>
         </div>
     </div>
-<script type="text/javascript" src="./assets/javascript/game.js"></script>
+
+<script type="text/javascript" src="./assets/javascript/game.js"></script> 
 </body>
 
 </html>
