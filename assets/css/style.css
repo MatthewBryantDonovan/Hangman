@@ -66,4 +66,7 @@ p, h1, span    {
         background-size: 100%;
         box-shadow: none;
     }
+    p, h1, span    {
+        font-size: 17px;
+    }
 }

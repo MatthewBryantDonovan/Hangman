@@ -74,6 +74,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
                         this._triggerEvent("oninput");
+                        Keyboard.lastKeyPressed = "";
                     });
 
                     break;
@@ -85,6 +86,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this._toggleCapsLock();
                         keyElement.classList.toggle("keyboard__key--active", this.properties.capsLock);
+                        Keyboard.lastKeyPressed = "";
                     });
 
                     break;
@@ -96,6 +98,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this.properties.value += "\n";
                         this._triggerEvent("oninput");
+                        Keyboard.lastKeyPressed = "\n";
                     });
 
                     break;
@@ -107,6 +110,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this.properties.value += " ";
                         this._triggerEvent("oninput");
+                        Keyboard.lastKeyPressed = " ";
                     });
 
                     break;
@@ -118,6 +122,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this.close();
                         this._triggerEvent("onclose");
+                        Keyboard.lastKeyPressed = "";
                     });
 
                     break;

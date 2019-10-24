@@ -178,7 +178,6 @@ document.onkeyup = function (getkey) {
     } else {
 
       userGuess = getkey.key;
-      userGuess = Keyboard.lastKeyPressed;
       userGuess = userGuess.toLowerCase();
       document.getElementById("error").innerHTML = "";
       //only run logic if user inputs a letter
@@ -193,8 +192,7 @@ document.onkeyup = function (getkey) {
 
         //add the letters to the board if found in word
         var a = 0;
-        if (guessedBefore == false) {
-          userGuessed.push(userGuess);
+        if (guessedBefore == false && currentVsUser.indexOf(userGuess) == -1) {
           currentWordAr.forEach(function (currentLetter) {
             if (userGuess === currentWordAr[a]) {
               currentVsUser[a] = currentLetter;
@@ -204,6 +202,8 @@ document.onkeyup = function (getkey) {
             }
             a++
           });
+          if (currentVsUser.indexOf(userGuess) == -1) {
+            userGuessed.push(userGuess);}
         } else {
           document.getElementById("error").innerHTML = "! Snake, you tried that already !";
           alertSound();
@@ -212,7 +212,7 @@ document.onkeyup = function (getkey) {
         }
 
         // if used didn't guess correctly - take away a guess
-        if (guessedCorrectly == false && guessedBefore == false) {
+        if (guessedCorrectly == false && guessedBefore == false && currentVsUser.indexOf(userGuess) == -1) {
           guessesRemaining--;
         }
 
@@ -362,8 +362,7 @@ document.onclick = function (getkey) {
 
         //add the letters to the board if found in word
         var a = 0;
-        if (guessedBefore == false) {
-          userGuessed.push(userGuess);
+        if (guessedBefore == false && currentVsUser.indexOf(userGuess) == -1) {
           currentWordAr.forEach(function (currentLetter) {
             if (userGuess === currentWordAr[a]) {
               currentVsUser[a] = currentLetter;
@@ -373,6 +372,8 @@ document.onclick = function (getkey) {
             }
             a++
           });
+          if (currentVsUser.indexOf(userGuess) == -1) {
+            userGuessed.push(userGuess);}
         } else {
           document.getElementById("error").innerHTML = "! Snake, you tried that already !";
           alertSound();
@@ -381,7 +382,7 @@ document.onclick = function (getkey) {
         }
 
         // if used didn't guess correctly - take away a guess
-        if (guessedCorrectly == false && guessedBefore == false) {
+        if (guessedCorrectly == false && guessedBefore == false && currentVsUser.indexOf(userGuess) == -1) {
           guessesRemaining--;
         }
 
