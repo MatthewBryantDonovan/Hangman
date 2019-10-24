@@ -460,4 +460,5 @@ document.onclick = function (getkey) {
     document.getElementById("play-again").innerHTML = "";
   }
   mainSound();
+  Keyboard.lastKeyPressed = "";
 }
