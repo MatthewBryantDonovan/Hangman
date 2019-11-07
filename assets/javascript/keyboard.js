@@ -145,7 +145,7 @@ const Keyboard = {
                 fragment.appendChild(document.createElement("br"));
             }
         });
-        
+
         return fragment;
     },
 

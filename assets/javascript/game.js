@@ -50,6 +50,8 @@ x.addListener(function (changed) {
   }
 });
 
+
+// line 118 ends sound functions
 function mainSound() {
   mainThemeMP3.volume = 0.2;
   mainThemeMP3.play();
@@ -166,7 +168,7 @@ document.onkeyup = function (getkey) {
 
 
 
-
+    // eat first input to apply playerboard
     if (firstInput == false) {
       document.getElementById("start").innerHTML = "";
       document.getElementById("play-again").innerHTML = "";
@@ -177,6 +179,7 @@ document.onkeyup = function (getkey) {
       firstInput = true;
     } else {
 
+        // get user keypress
       userGuess = getkey.key;
       userGuess = userGuess.toLowerCase();
       document.getElementById("error").innerHTML = "";
@@ -295,8 +298,7 @@ document.onkeyup = function (getkey) {
 
 
 
-// try to find a way to make the mobile version to work in the onkeyup
-
+// onclick version of lines 133 - 296
 document.onclick = function (getkey) {
   if (wins < wordPool.length) {
 
