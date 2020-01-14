@@ -234,6 +234,7 @@ document.onkeyup = function (getkey) {
           document.getElementById("guesses-Remaining").innerHTML = "";
           document.getElementById("user-guessed").innerHTML = "";
 
+          //play current win response
           if (wins == 1) {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             winOneSound();
@@ -284,9 +285,9 @@ document.onkeyup = function (getkey) {
           snakeSound();
           gameStart = true;
         }
-      } else {
       }
     }
+    // final win message
   } else {
     document.getElementById("wins-").innerHTML = "";
     document.getElementById("mission-complete").innerHTML = "Quick infiltrate the facility!";
@@ -337,7 +338,7 @@ document.onclick = function (getkey) {
 
 
 
-
+    // set up game board
     if (firstInput == false) {
       document.getElementById("start").innerHTML = "";
       document.getElementById("play-again").innerHTML = "";
@@ -403,6 +404,8 @@ document.onclick = function (getkey) {
           document.getElementById("guesses-Remaining").innerHTML = "";
           document.getElementById("user-guessed").innerHTML = "";
 
+
+          // play current win response
           if (wins == 1) {
             document.getElementById("wins-").innerHTML = "Password entered: " + currentWord;
             winOneSound();
@@ -456,6 +459,7 @@ document.onclick = function (getkey) {
       } else {
       }
     }
+    // final win message
   } else {
     document.getElementById("wins-").innerHTML = "";
     document.getElementById("mission-complete").innerHTML = "Quick infiltrate the facility!";
