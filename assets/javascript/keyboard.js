@@ -1,3 +1,5 @@
+// Keyboard logic from - https://codepen.io/dcode-software/pen/KYYKxP?fbclid=IwAR0MXx7zVEQIxo-MT2TVRDdzUDK-t4QPkBc1g3IgVED26BDGATCLrQLS2l0
+// Certain code as been altered to better suit the site.
 const Keyboard = {
     elements: {
         main: null,

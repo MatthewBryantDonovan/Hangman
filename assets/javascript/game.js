@@ -1,9 +1,8 @@
-// Start by declaring Variables
-var wordPool = ["Psychokinesis", "Vulcan", "Raven", "Mantis", "Ocelot", "Campbell", "Nanomachines", "Zanzibar", "Foxhound", "Foxdie"]
+var wordPool = ["Psychokinesis", "Vulcan", "Raven", "Mantis", "Ocelot", "Campbell", "Nanomachines", "Zanzibar", "Foxhound", "Foxdie"];
 var pastGameWords = [];
 var currentWord = wordPool[Math.floor(Math.random() * wordPool.length)];
 var currentWordAr = currentWord.toLowerCase().split("");
-var userGuess
+var userGuess;
 var userGuessed = [];
 var currentVsUser = [];
 var winCon = 0;
@@ -40,6 +39,7 @@ if (x.matches) {
   document.getElementById("vkb-toggle").style.display = "none";
 }
 
+// Allows the virtual keyboard to only appear on small screens (mobile) as the base game requires a keyboard
 x.addListener(function (changed) {
   if (changed.matches) {
     console.log("small screen");
@@ -51,7 +51,7 @@ x.addListener(function (changed) {
 });
 
 
-// line 118 ends sound functions
+// Sound functions to be used later
 function mainSound() {
   mainThemeMP3.volume = 0.2;
   mainThemeMP3.play();
@@ -203,7 +203,7 @@ document.onkeyup = function (getkey) {
               //add the amount of letters correct to check against win conditon later
               amountCorrect++;
             }
-            a++
+            a++;
           });
           if (currentVsUser.indexOf(userGuess) == -1) {
             userGuessed.push(userGuess);}
@@ -372,7 +372,7 @@ document.onclick = function (getkey) {
               //add the amount of letters correct to check against win conditon later
               amountCorrect++;
             }
-            a++
+            a++;
           });
           if (currentVsUser.indexOf(userGuess) == -1) {
             userGuessed.push(userGuess);}
