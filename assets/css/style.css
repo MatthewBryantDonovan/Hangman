@@ -3,6 +3,14 @@
     src: url(../TTF/METAG___.TTF);
 }
 
+#mystery {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 select {
     background: url(../images/gameScreen.gif);
     background-size: 100% 100vh;
